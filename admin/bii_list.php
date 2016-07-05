@@ -76,7 +76,7 @@ $nb_attr = $nom_classe::nbAttr();
 		if ($nom_classe::exportable()) {
 			$date = time();
 //			echo dirname(__FILE__);
-			$fichier = "/web/clients/lhavrais/www.liguehavraise.fr/wp-content/plugins/bii_donations/downloads/$nom_classe-$date.csv";
+			$fichier = bii_advanced_admin_path."/downloads/$nom_classe-$date.csv";
 			$WHERE_WRITECSV = $where;
 			$nom_classe::writeCSV($fichier);
 			?>

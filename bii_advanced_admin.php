@@ -2,16 +2,17 @@
 /*
   Plugin Name: Bii Advanced Admin
   Description: Ajoute des fonctionnalités dans l'interface d'admin
-  Version: 2.0
+  Version: 2.1
   Author: Biilink Agency
   Author URI: http://biilink.com/
   License: GPL2
  */
-define('bii_advanced_admin_version', '2.0');
+define('bii_advanced_admin_version', '2.1');
 define('bii_advanced_admin_path', plugin_dir_path(__FILE__));
 define('bii_advanced_admin_url', plugin_dir_url(__FILE__));
 
 function bii_option_page() {
+	$we_use_bii = true;
 	wp_enqueue_script('bii-options', bii_advanced_admin_url . 'admin/js/bii_options.js', array('jquery'), null, true);
 	wp_enqueue_style('bii-admin-css', bii_advanced_admin_url . 'admin/css/admin.css');
 	require_once(bii_advanced_admin_path . "/admin/bii_options.php");
@@ -82,6 +83,7 @@ add_filter('bii_options_page_link', 'bii_options_page_link', 1, 1);
 function bii_listeClass($val1 = null) {
 	$list = [
 		"global_class",
+		"options",
 		"posts",
 		"terms",
 		"postmeta",
@@ -119,6 +121,7 @@ function bii_advanced_admin_informations() {
 add_action("bii_informations", "bii_advanced_admin_informations", 1);
 
 function bii_dashboard() {
+	$we_use_bii = true;
 	wp_enqueue_script('admin-init', plugins_url('/admin/js/dashboard.js', __FILE__), array('jquery'), null, true);
 	wp_enqueue_style('bii-admin-css', plugins_url('/admin/css/admin.css', __FILE__));
 	include('admin/bii_dashboard.php');
